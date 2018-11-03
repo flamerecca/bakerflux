@@ -1,10 +1,10 @@
 <?php
 
-namespace Flamerecca\Bakerflow\Commands;
+namespace Flamerecca\Bakerflux\Commands;
 
 use File;
-use Flamerecca\Bakerflow\Exceptions\FileAlreadyExistsException;
-use Flamerecca\Bakerflow\Generators\Generator;
+use Flamerecca\Bakerflux\Exceptions\FileAlreadyExistsException;
+use Flamerecca\Bakerflux\Generators\Generator;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
@@ -18,7 +18,7 @@ class BakeMongoEntityCommand extends Command
      *
      * @var string
      */
-    protected $name = 'bakerflow:bake:mongo-entity';
+    protected $name = 'bakerflux:bake:mongo-entity';
 
     /**
      * The description of command.

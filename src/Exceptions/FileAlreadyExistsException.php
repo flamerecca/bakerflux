@@ -1,6 +1,6 @@
 <?php
 
-namespace Flamerecca\Bakerflow\Exceptions;
+namespace Flamerecca\Bakerflux\Exceptions;
 
 use Throwable;
 

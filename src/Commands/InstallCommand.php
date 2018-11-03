@@ -1,8 +1,8 @@
 <?php
 
-namespace Flamerecca\Bakerflow\Commands;
+namespace Flamerecca\Bakerflux\Commands;
 
-use Flamerecca\Bakerflow\BakerflowServiceProvider;
+use Flamerecca\Bakerflux\BakerfluxServiceProvider;
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Filesystem\Filesystem;
@@ -13,21 +13,19 @@ use Symfony\Component\Process\Process;
 class InstallCommand extends Command
 {
 
-    protected $seedersPath = __DIR__.'/../../ingredients/seeders/';
-
     /**
      * The console command name.
      *
      * @var string
      */
-    protected $name = 'bakerflow:install';
+    protected $name = 'bakerflux:install';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Install Bakerflow package';
+    protected $description = 'Install Bakerflux package';
 
     /**
      * @return array
@@ -66,14 +64,9 @@ class InstallCommand extends Command
      */
     public function handle(Filesystem $filesystem)
     {
-        $this->info('Publishing the Bakerflow assets and config files');
-        $this->publishAsset();
 
         $this->info('Publishing useful traits');
         $this->publishTraits($filesystem);
-
-        $this->info('Migrating the database tables into your application');
-        $this->call('migrate');
 
         $this->info('Dumping the autoload files and reloading all new files');
         $this->composerReload();
@@ -81,17 +74,7 @@ class InstallCommand extends Command
         $this->info('Adding the storage symlink to your public folder');
         $this->call('storage:link');
 
-        $this->info('Bakerflow Successfully Installed!');
-    }
-
-    /**
-     * Publishing the Bakerflow assets, database, and config files
-     */
-    private function publishAsset()
-    {
-        $tags = ['bakerflow_assets', 'seeds'];
-        $this->call('vendor:publish', ['--provider' => BakerflowServiceProvider::class, '--tag' => $tags]);
-        $this->call('vendor:publish', ['--provider' => ImageServiceProviderLaravel5::class]);
+        $this->info('Bakerflux Successfully Installed!');
     }
 
     /**

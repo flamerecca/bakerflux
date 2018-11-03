@@ -1,4 +1,4 @@
-# Version for Bakerflow
+# Version for Bakerflux
 
 We try to follow [semver](http://semver.org/) version standards as best we can.
 

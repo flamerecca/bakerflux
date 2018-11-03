@@ -1,12 +1,12 @@
 <?php
 
-namespace Flamerecca\Bakerflow;
+namespace Flamerecca\Bakerflux;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Routing\Router;
 
-class BakerflowServiceProvider extends ServiceProvider
+class BakerfluxServiceProvider extends ServiceProvider
 {
     public function register()
     {

@@ -1,18 +1,18 @@
 <?php
 
-namespace Flamerecca\Bakerflow\Commands;
+namespace Flamerecca\Bakerflux\Commands;
 
 use File;
-use Flamerecca\Bakerflow\Generators\Generator;
+use Flamerecca\Bakerflux\Generators\Generator;
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
-use Flamerecca\Bakerflow\Exceptions\FileAlreadyExistsException;
+use Flamerecca\Bakerflux\Exceptions\FileAlreadyExistsException;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
 /**
  * Class BakeEntityCommand
- * @package Flamerecca\Bakerflow\Commands
+ * @package Flamerecca\Bakerflux\Commands
  */
 class BakeEntityCommand extends Command
 {
@@ -21,7 +21,7 @@ class BakeEntityCommand extends Command
      *
      * @var string
      */
-    protected $name = 'bakerflow:bake:entity';
+    protected $name = 'bakerflux:bake:entity';
 
     /**
      * The description of command.
@@ -140,7 +140,7 @@ class BakeEntityCommand extends Command
             return;
         }
 
-        $this->call('bakerflow:bake:controller', $this->arguments());
+        $this->call('bakerflux:bake:controller', $this->arguments());
         return;
     }
 }

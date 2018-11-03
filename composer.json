@@ -32,20 +32,19 @@
     },
     "autoload": {
         "psr-4": {
-            "Flamerecca\\Bakerflow\\": "src/"
+            "Flamerecca\\Bakerflux\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Flamerecca\\Bakerflow\\Tests\\": "tests/"
+            "Flamerecca\\Bakerflux\\Tests\\": "tests/"
       }
     },
     "minimum-stability": "stable",
     "extra": {
         "laravel": {
             "providers": [
-                "Flamerecca\\Bakerflow\\BakerflowServiceProvider",
-                "Flamerecca\\Bakerflow\\Providers\\BakerflowDummyBreadServiceProvider"
+                "Flamerecca\\Bakerflux\\BakerfluxServiceProvider"
             ]
         }
     }

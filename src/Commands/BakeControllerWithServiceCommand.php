@@ -1,9 +1,9 @@
 <?php
 
-namespace Flamerecca\Bakerflow\Commands;
+namespace Flamerecca\Bakerflux\Commands;
 
 use File;
-use Flamerecca\Bakerflow\Generators\Generator;
+use Flamerecca\Bakerflux\Generators\Generator;
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
 use Illuminate\Filesystem\Filesystem;
@@ -17,7 +17,7 @@ class BakeControllerWithServiceCommand extends Command
      *
      * @var string
      */
-    protected $name = 'bakerflow:bake:controller';
+    protected $name = 'bakerflux:bake:controller';
 
     /**
      * The console command description.

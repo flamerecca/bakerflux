@@ -1,6 +1,6 @@
 <?php
 
-namespace Flamerecca\Bakerflow\Generators;
+namespace Flamerecca\Bakerflux\Generators;
 
 
 use Illuminate\Support\Collection;
