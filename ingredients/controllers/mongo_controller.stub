@@ -1,0 +1,122 @@
+<?php
+
+namespace {{NAMESPACE}};
+
+use Illuminate\Http\Request;
+use {{APPNAME}}Traits\HasJsonResponses;
+use {{APPNAME}}Services\{{CONTROLLER}}Service;
+use Illuminate\Http\JsonResponse;
+
+/**
+ * Class {{CONTROLLER}}Controller.
+ *
+ * @package {{NAMESPACE}}
+ */
+class {{CONTROLLER}}Controller extends Controller
+{
+    use HasJsonResponses;
+
+    /**
+     * @var {{CONTROLLER}}Service
+     */
+    protected $service;
+
+    /**
+     * {{CONTROLLER}}Controller constructor.
+     *
+     * @param {{CONTROLLER}}Service $service
+     */
+    public function __construct({{CONTROLLER}}Service $service)
+    {
+        $this->service = $service;
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return JsonResponse
+     */
+    public function index(): JsonResponse
+    {
+        try {
+            ${{PLURAL}} = $this->service->all();
+            return $this->returnSuccessJsonResponse(${{PLURAL}}->toArray());
+        } catch (\Exception $exception) {
+            return $this->returnFailJsonResponse($exception);
+        }
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function store(Request $request): JsonResponse
+    {
+        try {
+            ${{SINGULAR}} = $this->service->add($request);
+            return $this->returnSuccessJsonResponse(
+                ${{SINGULAR}}->toArray(),
+                trans('success.create', ['entity' => '{{SINGULAR}}'])
+            );
+        } catch (\Exception $exception) {
+            return $this->returnFailJsonResponse($exception);
+        }
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param Request $request
+     *
+     * @return JsonResponse
+     */
+    public function show(Request $request): JsonResponse
+    {
+        try {
+            ${{SINGULAR}} = $this->service->get($request);
+            return $this->returnSuccessJsonResponse(${{SINGULAR}});
+        } catch (\Exception $exception) {
+            return $this->returnFailJsonResponse($exception);
+        }
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function update(Request $request): JsonResponse
+    {
+        try {
+            ${{SINGULAR}} = $this->service->modify($request);
+            return $this->returnSuccessJsonResponse(
+                ${{SINGULAR}},
+                trans('success.create', ['entity' => '{{SINGULAR}}'])
+            );
+        } catch (\Exception $exception) {
+            return $this->returnFailJsonResponse($exception);
+        }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function destroy(Request $request): JsonResponse
+    {
+        try {
+            ${{SINGULAR}} = $this->service->delete($request);
+            return $this->returnSuccessJsonResponse(
+                ${{SINGULAR}},
+                trans('success.delete', ['entity' => '{{SINGULAR}}'])
+            );
+        } catch (\Exception $exception) {
+            return $this->returnFailJsonResponse($exception);
+        }
+    }
+}

@@ -1,0 +1,52 @@
+{
+    "name": "flamerecca/bakerflux",
+    "description": "Micro Generator By Bakerflow",
+    "keywords": ["laravel", "api", "bakerflux"],
+    "license": "MIT",
+    "homepage": "https://gitpage.reccachao.net/bakerflux/",
+    "support": {
+        "issues": "https://github.com/flamerecca/bakerflux/issues",
+        "source": "https://github.com/flamerecca/bakerflux"
+    },
+    "authors": [
+        {
+            "name": "Recca Chao",
+            "email": "flamerecca711@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "7.2.*",
+        "tcg/voyager": "~1.1",
+        "prettus/l5-repository": "~2.6",
+        "jenssegers/mongodb": "~3.4"
+    },
+    "require-dev": {
+        "phpunit/phpcov": "~3.0|~4.0",
+        "phpunit/phpunit": "~5.7.14|~6.1|~7.0",
+        "laravel/framework": "~5.4.36|~5.5.0|~5.6.0",
+        "orchestra/testbench": "~3.4.11|~3.5.0|~3.6.0",
+        "orchestra/database": "~3.4.0|~3.5.0|~3.6.0",
+        "orchestra/testbench-core": "~3.4.5|~3.5.0|~3.6.0",
+        "laravel/browser-kit-testing": "~1.0.0|~2.0.0",
+        "orchestra/testbench-browser-kit": "~3.4.1|~3.5.0|~3.6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Flamerecca\\Bakerflow\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Flamerecca\\Bakerflow\\Tests\\": "tests/"
+      }
+    },
+    "minimum-stability": "stable",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Flamerecca\\Bakerflow\\BakerflowServiceProvider",
+                "Flamerecca\\Bakerflow\\Providers\\BakerflowDummyBreadServiceProvider"
+            ]
+        }
+    }
+}

@@ -1,0 +1,36 @@
+<?php
+namespace App\Traits;
+
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Response;
+use Prettus\Validator\Exceptions\ValidatorException;
+
+trait HasJsonResponses
+{
+    /**
+     * @param $data
+     * @param string $message
+     * @return JsonResponse
+     */
+    public function returnSuccessJsonResponse($data, $message = ''): JsonResponse
+    {
+        return response()->json([
+            'error'   => false,
+            'message'   => $message,
+            'data' => $data
+        ], Response::HTTP_OK);
+    }
+
+    /**
+     * @param \Exception $exception
+     * @param int $status
+     * @return JsonResponse
+     */
+    public function returnFailJsonResponse(\Exception $exception, $status = Response::HTTP_NOT_FOUND): JsonResponse
+    {
+        return response()->json([
+            'error'   => true,
+            'message' => $exception->getMessage()
+        ], $status);
+    }
+}

@@ -1,0 +1,97 @@
+<?php
+
+namespace {{NAMESPACE}};
+
+use Illuminate\Http\Request;
+use Prettus\Validator\Contracts\ValidatorInterface;
+use Prettus\Validator\Exceptions\ValidatorException;
+use {{APPNAME}}Http\Requests\{{CLASS}}CreateRequest;
+use {{APPNAME}}Http\Requests\{{CLASS}}UpdateRequest;
+use {{APPNAME}}Repositories\{{CLASS}}Repository;
+use {{APPNAME}}Validators\{{CLASS}}Validator;
+
+/**
+ * Class {{CONTROLLER}}Service.
+ *
+ * @package {{NAMESPACE}}
+ */
+class {{CONTROLLER}}Service
+{
+    /**
+     * @var {{CLASS}}Repository
+     */
+    protected $repository;
+
+    /**
+     * @var {{CLASS}}Validator
+     */
+    protected $validator;
+
+    /**
+     * {{CONTROLLER}}Service constructor.
+     *
+     * @param {{CLASS}}Repository $repository
+     * @param {{CLASS}}Validator $validator
+     */
+    public function __construct(
+        {{CLASS}}Repository $repository,
+        {{CLASS}}Validator $validator
+    ) {
+        $this->repository = $repository;
+        $this->validator  = $validator;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function all()
+    {
+        $this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
+        ${{PLURAL}} = $this->repository->all();
+        return ${{PLURAL}};
+    }
+
+    /**
+     * @param Request $request
+     * @return mixed
+     */
+    public function get(Request $request)
+    {
+        return $this->repository->find($request->route('id'));
+    }
+
+    /**
+     * @param {{CLASS}}CreateRequest $request
+     * @return mixed
+     * @throws ValidatorException
+     */
+    public function add({{CLASS}}CreateRequest $request)
+    {
+        $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_CREATE);
+        ${{SINGULAR}} = $this->repository->create($request->all());
+        return ${{SINGULAR}};
+    }
+
+    /**
+     * @param {{CLASS}}UpdateRequest $request
+     * @return mixed
+     * @throws ValidatorException
+     */
+    public function modify({{CLASS}}UpdateRequest $request)
+    {
+        $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_UPDATE);
+        ${{SINGULAR}} = $this->repository->update($request->all(), $request->route('id'));
+        return ${{SINGULAR}};
+    }
+
+    /**
+     * @param Request $request
+     * @return mixed
+     */
+    public function delete(Request $request)
+    {
+        ${{SINGULAR}} = $this->repository->find($request->route('id'));
+        $this->repository->delete($request->route('id'));
+        return ${{SINGULAR}};
+    }
+}

@@ -1,0 +1,28 @@
+<?php
+
+namespace {{NAMESPACE}};
+
+use Jenssegers\Mongodb\Eloquent\Model;
+
+/**
+ * Class {{CLASS}}.
+ *
+ * @package {{NAMESPACE}}
+ */
+class {{CLASS}} extends Model
+{
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = {{FILLABLE}};
+
+    /**
+     * The connection name for the model.
+     *
+     * @var string
+     */
+    protected $connection = 'mongodb';
+
+}
